@@ -116,3 +116,9 @@ body { font-size: 17px; }
 @media (prefers-reduced-motion: reduce) {
   .sub-orbits, .deep-link { animation: none; transition: none; }
 }
+
+/* Spacing after removing decorative counters. */
+.deep-link h3 { margin-top: 24px; }
+.orbit-card h3 { margin-top: 18px; }
+.method-step strong { margin-top: 20px; }
+@media (max-width: 640px) { .orbit-card h3 { margin-top: 12px; } .method-step strong { margin-top: 16px; } }
