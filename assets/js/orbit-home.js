@@ -186,7 +186,7 @@
     });
     servicePanel.setAttribute('aria-labelledby', `service-tab-${index}`);
     serviceDisplay.innerHTML = service.stage;
-    $('#service-number').textContent = `/ SERVICE ${String(index+1).padStart(2,'0')}`;
+    $('#service-category').textContent = service.name.toUpperCase();
     $('#service-title').textContent = service.title;
     $('#service-description').textContent = service.description;
     $('#service-tags').replaceChildren(...service.tags.map(tag => {
@@ -220,7 +220,6 @@
         b.classList.toggle('is-current', index===i);
         b.setAttribute('aria-pressed', String(index===i));
       });
-      $('#method-phase').textContent = String(index+1).padStart(2,'0');
       $('#method-detail-title').textContent = steps[index].title;
       $('#method-detail-text').textContent = steps[index].text;
     });
