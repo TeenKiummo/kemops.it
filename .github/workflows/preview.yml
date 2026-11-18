@@ -1,0 +1,29 @@
+name: ORBIT branch preview
+
+on:
+  push:
+    branches: ["feature/kemops-orbit-b2b"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+      - name: Check site
+        run: python scripts/check_site.py
+      - name: Prepare local preview
+        run: |
+          mkdir preview
+          cp *.html robots.txt sitemap.xml preview/
+          cp -R assets preview/
+      - name: Upload preview bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: kemops-orbit-preview
+          path: preview/
+          if-no-files-found: error
